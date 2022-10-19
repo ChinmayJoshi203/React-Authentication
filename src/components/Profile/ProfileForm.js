@@ -5,7 +5,8 @@ import classes from './ProfileForm.module.css';
 const ProfileForm = () => {
   const newPasswordRef=useRef()
   const authCtx=useContext(AuthContext)
-  const changePasswordHandler=()=>{
+  const changePasswordHandler=(event)=>{
+    event.preventDefault()
     fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAh2ZeTLgH-x7KEx4Rgisfsm8om41K21Q0',
     {
       method: 'POST',

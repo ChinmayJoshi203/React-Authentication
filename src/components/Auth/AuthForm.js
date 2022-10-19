@@ -50,7 +50,7 @@ return res.json()        }
       })
       .then(data=>{
         authCtx.login(data.idToken)
-        history.push('/')
+        history.replace('/')
         
       })
       .catch(err=>{
