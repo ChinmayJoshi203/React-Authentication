@@ -9,7 +9,7 @@ const authCtx=useContext(AuthContext)
 const history=useHistory()
 const logoutHandler=()=>{
   authCtx.logout()
-  history.replace('/')
+  history.replace('/auth')
 }
 const userIsLoggedIn=authCtx.isLoggedIn
   return (

@@ -1,10 +1,12 @@
 import { useContext, useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import AuthContext from '../../store/auth-context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
   const newPasswordRef=useRef()
   const authCtx=useContext(AuthContext)
+  const history=useHistory()
   const changePasswordHandler=(event)=>{
     event.preventDefault()
     fetch('https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyAh2ZeTLgH-x7KEx4Rgisfsm8om41K21Q0',
@@ -23,6 +25,8 @@ const ProfileForm = () => {
     .then((res)=>{
       if(res.ok){
         alert('Changed SuccesFully')
+        authCtx.logout()
+        history.replace('/auth')
       }
       else{
         throw new Error('Password cannot be changed')
